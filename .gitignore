@@ -137,6 +137,8 @@ logs/
 *_backup.*
 .github-info.txt
 FINAL_SUMMARY.txt
+FINAL_CHECKLIST.md
+QUICK_START_GUIDE.txt
 
 # Development and testing
 docs/
