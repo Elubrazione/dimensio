@@ -34,6 +34,11 @@ class Compressor(ABC):
         self.output_dir = output_dir or './results/compression'
         self.compression_history: List[dict] = []  # Track compression updates
         
+        self._dimension_history: List[int] = []
+        self._iteration_history: List[int] = []
+        
+        self._source_similarities: Optional[Dict[int, float]] = None
+        
         if filling_strategy is None:
             from ..filling import DefaultValueFilling
             self.filling_strategy = DefaultValueFilling()
@@ -61,6 +66,12 @@ class Compressor(ABC):
                 self.origin_config_space, space_history, source_similarities
             )
             self.unprojected_space = self.pipeline.unprojected_space
+            
+            # Initialize dimension history tracking
+            self._dimension_history = [len(self.surrogate_space.get_hyperparameters())]
+            self._iteration_history = [0]
+            
+            self._source_similarities = source_similarities
             
             if self.save_compression_info:
                 self._save_compression_info(event='initial_compression')
@@ -136,6 +147,11 @@ class Compressor(ABC):
                 
                 if self.save_compression_info:
                     self._save_compression_info(event='adaptive_update', iteration=history.num_objectives)
+            
+            current_dims = len(self.surrogate_space.get_hyperparameters())
+            current_iter = len(self._iteration_history)  # Next iteration number
+            self._dimension_history.append(current_dims)
+            self._iteration_history.append(current_iter)
             
             return updated
         return False

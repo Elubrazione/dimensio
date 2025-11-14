@@ -110,10 +110,13 @@ class SHAPBoundaryRangeStep(BoundaryRangeStep):
                 )
                 beneficial_shap = -beneficial_shap  # Convert negative to positive weights
             
+            # Get similarity weights for beneficial samples
             if source_similarities:
                 beneficial_similarities = np.array([
                     source_similarities.get(idx, 0.0) for idx in beneficial_history_indices
                 ])
+            else:
+                beneficial_similarities = np.ones_like(beneficial_shap)
             
             # Combined weight = SHAP weight * similarity weight
             combined_weights = beneficial_shap * beneficial_similarities
