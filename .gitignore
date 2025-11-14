@@ -135,14 +135,9 @@ logs/
 *.log
 *.txt.bak
 *_backup.*
-.github-info.txt
-FINAL_SUMMARY.txt
-FINAL_CHECKLIST.md
-QUICK_START_GUIDE.txt
 
 # Development and testing
 docs/
-verify_package.py
 test_*.py
 example_*.py
 
