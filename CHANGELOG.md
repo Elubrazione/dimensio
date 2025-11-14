@@ -2,9 +2,6 @@
 
 All notable changes to this project will be documented in this file.
 
-The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
-and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
-
 ## [0.1.0] - 2025-11-13
 
 ### Added
@@ -44,11 +41,25 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 
 
+## [0.2.0] - 2025-11-15
+
+### Added
+- 增强压缩可视化覆盖范围
+- 添加可视化跟踪功能
+- 添加中文文档（README_CN.md）
+- 添加示例代码目录（examples/）
+  - 快速开始示例
+  - 自适应策略示例
+  - 多源/单源数据示例
+  - 综合示例
+
+### Fixed
+- 修复工具模块中重复名称的 bug（logger => _logger）
+
 ## [Unreleased]
 
 ### Planned
-- 添加更多示例代码
 - 完善单元测试
-- 添加性能基准测试
 - 支持更多压缩策略
 - 改进文档和教程
+- 添加填充策略
