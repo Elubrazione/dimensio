@@ -93,15 +93,41 @@ class Compressor(ABC):
             return self.pipeline.needs_unproject()
         return False
     
-    def unproject_point(self, point: Configuration) -> dict:
+    def unproject_points(self, points: List[Configuration]) -> List[Configuration]:
+        return [self.unproject_point(point) for point in points]
+
+    def unproject_point(self, point: Configuration) -> Configuration:
+        target_space = None
+        compressed_values = None
         if self.pipeline is not None:
-            return self.pipeline.unproject_point(point)
-        if hasattr(point, 'get_dictionary'):
-            return point.get_dictionary()
-        elif isinstance(point, dict):
-            return point
+            if self.unprojected_space is None:
+                raise ValueError("Unprojected space not initialized. Call compress_space() first.")
+            unprojected_values = self.pipeline.unproject_point(point)
+            target_space = self.unprojected_space
+            compressed_values = point.get_dictionary()
         else:
-            return dict(point)
+            if hasattr(point, 'get_dictionary'):
+                unprojected_values = point.get_dictionary()
+                target_space = getattr(point, 'configuration_space', None)
+                compressed_values = point.get_dictionary()
+            elif isinstance(point, dict):
+                unprojected_values = point
+                compressed_values = point
+            else:
+                unprojected_values = dict(point)
+                compressed_values = dict(point)
+        
+        if target_space is None:
+            target_space = self.unprojected_space or self.sample_space
+        
+        if target_space is None:
+            raise ValueError("Unable to determine target configuration space for unprojection.")
+
+        unprojected_config = Configuration(target_space, values=unprojected_values)
+        if hasattr(point, 'origin') and getattr(point, 'origin', None) is not None:
+            unprojected_config.origin = point.origin
+        unprojected_config._low_dim_config = compressed_values
+        return unprojected_config
     
     def project_point(self, point) -> dict:
         if self.pipeline is not None:
@@ -276,4 +302,3 @@ class Compressor(ABC):
             'n_updates': len(self.compression_history),
             'pipeline_steps': [step.name for step in self.pipeline.steps] if self.pipeline else []
         }
-

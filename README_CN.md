@@ -644,8 +644,8 @@ def convert_config_to_surrogate_space(
 def get_compression_summary(self) -> dict:
     """获取压缩摘要信息"""
 
-def unproject_point(self, point: Configuration) -> dict:
-    """反投影配置（投影步骤 -> 原始空间）"""
+def unproject_point(self, point: Configuration) -> Configuration:
+    """反投影配置（投影步骤 -> 采样空间）"""
 
 def update_compression(self, history: History) -> bool:
     """自适应更新压缩策略"""

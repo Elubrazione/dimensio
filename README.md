@@ -645,15 +645,7 @@ for iteration in range(max_iterations):
     configs = sampling_strategy.sample(n=batch_size)
     
     # 4.2 Unproject if using projection
-    if compressor.needs_unproject():
-        eval_configs = []
-        for config in configs:
-            unprojected_dict = compressor.unproject_point(config)
-            # Create config in original space for evaluation
-            eval_config = Configuration(config_space, values=unprojected_dict)
-            eval_configs.append(eval_config)
-    else:
-        eval_configs = configs
+    eval_configs = compressor.unproject_points(configs)
     
     # 4.3 Evaluate configs
     results = []
@@ -723,11 +715,7 @@ class CompressedOptimizer:
             
             # Unproject if needed
             if self.compressor.needs_unproject():
-                eval_dict = self.compressor.unproject_point(config)
-                eval_config = Configuration(
-                    self.compressor.origin_config_space,
-                    values=eval_dict
-                )
+                eval_config = self.compressor.unproject_point(config)
             else:
                 eval_config = config
             
@@ -808,7 +796,7 @@ def convert_config_to_surrogate_space(
 ) -> Configuration:
     """Convert config to surrogate space"""
 
-def unproject_point(self, point: Configuration) -> dict:
+def unproject_point(self, point: Configuration) -> Configuration:
     """Unproject config (projection step -> original space)"""
 
 def update_compression(self, history: History) -> bool:

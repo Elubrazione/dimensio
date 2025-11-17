@@ -242,8 +242,8 @@ def example_4_quantization_projection():
     sample_config = sample_space.sample_configuration()
     print(f"  - Sample space config: {list(sample_config.get_dictionary().keys())}")
     
-    unprojected_dict = compressor.unproject_point(sample_config)
-    print(f"  - Unprojected config: {list(unprojected_dict.keys())}")
+    unprojected_config = compressor.unproject_point(sample_config)
+    print(f"  - Unprojected config: {list(unprojected_config.get_dictionary().keys())}")
     
     visualize_compression_details(compressor, save_dir=f'{res_dir}/example4_quantization_rembo/viz')
     

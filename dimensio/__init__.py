@@ -1,5 +1,5 @@
 from typing import Type, Optional
-from ConfigSpace import ConfigurationSpace
+from ConfigSpace import ConfigurationSpace, Configuration
 
 # Logging configuration
 from .utils.logger import setup_logging, disable_logging, enable_logging, get_logger
@@ -81,7 +81,16 @@ def get_compressor(compressor_type: Optional[str] = None,
             def _compress_space_impl(self, space_history=None):
                 return config_space, config_space
             def unproject_point(self, point):
-                return point.get_dictionary() if hasattr(point, 'get_dictionary') else dict(point)
+                if hasattr(point, 'get_dictionary'):
+                    values = point.get_dictionary()
+                    target_space = getattr(point, 'configuration_space', config_space)
+                elif isinstance(point, dict):
+                    values = point
+                    target_space = config_space
+                else:
+                    values = dict(point)
+                    target_space = config_space
+                return Configuration(target_space, values=values)
         return NoCompressor(config_space=config_space, **kwargs)
     
     steps = []
@@ -166,7 +175,16 @@ def get_compressor(compressor_type: Optional[str] = None,
             def _compress_space_impl(self, space_history=None):
                 return config_space, config_space
             def unproject_point(self, point):
-                return point.get_dictionary() if hasattr(point, 'get_dictionary') else dict(point)
+                if hasattr(point, 'get_dictionary'):
+                    values = point.get_dictionary()
+                    target_space = getattr(point, 'configuration_space', config_space)
+                elif isinstance(point, dict):
+                    values = point
+                    target_space = config_space
+                else:
+                    values = dict(point)
+                    target_space = config_space
+                return Configuration(target_space, values=values)
         return NoCompressor(config_space=config_space, **kwargs)
 
 
