@@ -32,7 +32,7 @@ from dimensio import (
     get_compressor
 )
 from dimensio.viz import visualize_compression_details
-from .utils import generate_mock_history
+from utils import generate_mock_history
 
 res_dir = "./results/comprehensive"
 

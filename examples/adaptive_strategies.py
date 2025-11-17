@@ -23,7 +23,7 @@ from dimensio.core.update import (
 )
 from dimensio.steps.dimension import SHAPImportanceCalculator
 from dimensio.viz import visualize_compression_details
-from .utils import create_simple_config_space, generate_history, generate_improving_history
+from utils import create_simple_config_space, generate_history, generate_improving_history
 
 res_dir = "./results/adaptive_strategies"
 

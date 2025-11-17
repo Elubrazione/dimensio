@@ -24,7 +24,7 @@ from dimensio import (
     setup_logging
 )
 from dimensio.viz import visualize_compression_details
-from .utils import create_spark_config_space, generate_mock_history
+from utils import create_spark_config_space, generate_mock_history
 
 res_dir = "./results/multiple_single_source"
 
