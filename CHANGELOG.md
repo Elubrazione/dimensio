@@ -41,6 +41,15 @@ All notable changes to this project will be documented in this file.
 ### Fixed
 
 
+## [0.2.2] - 2025-11-18
+
+### Added
+- 前端 API 支持：`compress_from_config` 函数，支持从 JSON 配置执行压缩
+- 步骤工厂 API：`create_step_from_string` 和 `create_steps_from_strings`，支持从字符串标识符创建压缩步骤
+- 命令行接口：`python -m dimensio.api.compress_api`，支持分开上传配置文件
+- 前端集成文档：`examples/FRONTEND_API.md`
+
+
 ## [0.2.0] - 2025-11-15
 
 ### Added

@@ -11,7 +11,7 @@ def read_requirements(filename):
 
 setup(
     name='dimensio',
-    version='0.2.1',
+    version='0.2.2',
     author='Lingching Tung',
     author_email='lingchingtung@stu.pku.edu.cn',
     description='A flexible configuration space compression library for Bayesian Optimization',
