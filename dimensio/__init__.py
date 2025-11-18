@@ -46,6 +46,14 @@ from .utils import (
     create_space_from_ranges,
 )
 
+from .api import (
+    create_step_from_string,
+    create_steps_from_strings,
+    get_available_step_strings,
+    validate_step_string,
+    compress_from_config,
+)
+
 _COMPRESSOR_REGISTRY = {
     'pipeline': Compressor,
     'shap': None,
@@ -227,4 +235,11 @@ __all__ = [
     'create_space_from_ranges',
     
     'get_compressor',
+    
+    'create_step_from_string',
+    'create_steps_from_strings',
+    'get_available_step_strings',
+    'validate_step_string',
+
+    'compress_from_config',
 ]
