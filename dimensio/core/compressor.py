@@ -266,6 +266,26 @@ class Compressor(ABC):
             step_info['step_index'] = i
             info['pipeline']['steps'].append(step_info)
         
+        performance_metrics = {}        
+        for step in self.pipeline.steps:
+            if hasattr(step, '_calculator') and hasattr(step._calculator, '_cache'):
+                cache = step._calculator._cache
+                if cache and cache.get('importances_per_task') is not None and cache.get('task_names') is not None:
+                    importances_per_task = cache['importances_per_task']
+                    task_names = cache['task_names']
+                    performance_metrics['multi_task_importances'] = importances_per_task.tolist()
+                    performance_metrics['task_names'] = task_names
+                    break
+        
+        if self._source_similarities is not None:
+            performance_metrics['source_similarities'] = {
+                str(performance_metrics['task_names'][int(i)]): v 
+                for i, v in self._source_similarities.items()
+            }
+        
+        if performance_metrics:
+            info['performance_metrics'] = performance_metrics
+        
         self.compression_history.append(info)
         
         os.makedirs(self.output_dir, exist_ok=True)
