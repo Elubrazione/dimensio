@@ -3,10 +3,10 @@ import numpy as np
 import pandas as pd
 from typing import Optional, List, Tuple, Dict
 from openbox.utils.history import History
-import logging
 from ConfigSpace import ConfigurationSpace
+from ...utils.logger import get_logger
 
-logger = logging.getLogger(__name__)
+logger = get_logger(__name__)
 from .base import RangeCompressionStep
 from ...utils import (
     create_space_from_ranges,

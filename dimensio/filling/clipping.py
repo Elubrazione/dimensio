@@ -1,8 +1,8 @@
 from typing import Dict, Any, Tuple, List
 from ConfigSpace import ConfigurationSpace
-import logging
+from ..utils.logger import get_logger
 
-logger = logging.getLogger(__name__)
+logger = get_logger(__name__)
 
 
 def clip_values_to_space(values: dict, space: ConfigurationSpace, 

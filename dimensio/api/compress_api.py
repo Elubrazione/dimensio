@@ -10,9 +10,9 @@ This module provides a high-level API for frontend applications to:
 import json
 import sys
 import argparse
+import logging
 from typing import Dict, Any, List, Optional, Union
 from pathlib import Path
-import logging
 
 from ConfigSpace import ConfigurationSpace, Configuration
 from ConfigSpace.hyperparameters import (
@@ -32,8 +32,9 @@ from .filling_factory import (
     create_filling_from_string,
     create_filling_from_config,
 )
+from ..utils.logger import get_logger
 
-logger = logging.getLogger(__name__)
+logger = get_logger(__name__)
 
 
 def create_config_space_from_dict(config_dict: Dict[str, Any]) -> ConfigurationSpace:

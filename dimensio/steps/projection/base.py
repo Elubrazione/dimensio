@@ -5,9 +5,9 @@ from ConfigSpace import ConfigurationSpace
 import ConfigSpace.hyperparameters as CSH
 
 from ...core.step import CompressionStep
-import logging
+from ...utils.logger import get_logger
 
-logger = logging.getLogger(__name__)
+logger = get_logger(__name__)
 
 
 class TransformativeProjectionStep(CompressionStep):

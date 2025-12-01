@@ -1,9 +1,9 @@
 from abc import ABC, abstractmethod
 from typing import Dict, Any
 from ConfigSpace import ConfigurationSpace
-import logging
+from ..utils.logger import get_logger
 
-logger = logging.getLogger(__name__)
+logger = get_logger(__name__)
 
 
 class FillingStrategy(ABC):

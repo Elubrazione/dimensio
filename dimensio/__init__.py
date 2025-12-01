@@ -2,7 +2,7 @@ from typing import Type, Optional
 from ConfigSpace import ConfigurationSpace, Configuration
 
 # Logging configuration
-from .utils.logger import setup_logging, disable_logging, enable_logging, get_logger
+from .utils.logger import setup_logging, disable_logging, enable_logging, get_logger, set_logger_factory
 
 from .core import (
     CompressionStep,
@@ -207,6 +207,7 @@ __all__ = [
     'disable_logging', 
     'enable_logging',
     'get_logger',
+    'set_logger_factory',
     
     # Core classes
     'CompressionStep',

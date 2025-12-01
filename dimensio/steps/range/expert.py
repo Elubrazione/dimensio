@@ -5,10 +5,10 @@ Expert-specified range compression step.
 import copy
 from typing import Optional, List, Dict, Tuple
 from openbox.utils.history import History
-import logging
 from ConfigSpace import ConfigurationSpace
+from ...utils.logger import get_logger
 
-logger = logging.getLogger(__name__)
+logger = get_logger(__name__)
 from .base import RangeCompressionStep
 from ...sampling import MixedRangeSamplingStrategy
 from ...utils import create_space_from_ranges

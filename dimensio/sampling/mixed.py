@@ -2,9 +2,9 @@ import random
 from typing import List, Optional, Tuple, Dict, Any
 from ConfigSpace import ConfigurationSpace, Configuration
 from .base import SamplingStrategy
-import logging
+from ..utils.logger import get_logger
 
-logger = logging.getLogger(__name__)
+logger = get_logger(__name__)
 
 
 class MixedRangeSamplingStrategy(SamplingStrategy):    
