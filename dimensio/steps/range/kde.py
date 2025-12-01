@@ -4,9 +4,7 @@ from typing import Optional, List, Tuple, Dict
 from openbox.utils.history import History
 from ConfigSpace import ConfigurationSpace
 from scipy.stats import gaussian_kde
-from ...utils.logger import get_logger
-
-logger = get_logger(__name__)
+from openbox import logger
 from .boundary import BoundaryRangeStep
 from ...utils import (
     create_space_from_ranges,

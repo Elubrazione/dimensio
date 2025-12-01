@@ -4,9 +4,7 @@ import ConfigSpace as CS
 import ConfigSpace.hyperparameters as CSH
 import numpy as np
 from sklearn.preprocessing import MinMaxScaler
-from ...utils.logger import get_logger
-
-logger = get_logger(__name__)
+from openbox import logger
 from .base import TransformativeProjectionStep
 from ...core import OptimizerProgress
 

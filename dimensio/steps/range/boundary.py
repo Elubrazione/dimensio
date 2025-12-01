@@ -4,9 +4,7 @@ import pandas as pd
 from typing import Optional, List, Tuple, Dict
 from openbox.utils.history import History
 from ConfigSpace import ConfigurationSpace
-from ...utils.logger import get_logger
-
-logger = get_logger(__name__)
+from openbox import logger
 from .base import RangeCompressionStep
 from ...utils import (
     create_space_from_ranges,

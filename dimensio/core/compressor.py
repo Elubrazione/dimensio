@@ -5,9 +5,7 @@ from ConfigSpace import ConfigurationSpace, Configuration
 import json
 import os
 from datetime import datetime
-from ..utils.logger import get_logger
-
-logger = get_logger(__name__)
+from openbox import logger
 
 if TYPE_CHECKING:
     from ..sampling import SamplingStrategy

@@ -4,9 +4,7 @@ from openbox.utils.history import History
 from ConfigSpace import ConfigurationSpace, Configuration
 import ConfigSpace as CS
 from sklearn.preprocessing import MinMaxScaler
-from ...utils.logger import get_logger
-
-logger = get_logger(__name__)
+from openbox import logger
 from .base import TransformativeProjectionStep
 
 

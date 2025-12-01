@@ -32,9 +32,7 @@ from .filling_factory import (
     create_filling_from_string,
     create_filling_from_config,
 )
-from ..utils.logger import get_logger
-
-logger = get_logger(__name__)
+from openbox import logger
 
 
 def create_config_space_from_dict(config_dict: Dict[str, Any]) -> ConfigurationSpace:

@@ -4,9 +4,7 @@ from abc import ABC, abstractmethod
 from typing import List, Optional, Tuple, Dict
 from openbox.utils.history import History
 from ConfigSpace import ConfigurationSpace
-from ...utils.logger import get_logger
-
-logger = get_logger(__name__)
+from openbox import logger
 from ...utils import (
     extract_numeric_hyperparameters,
     extract_top_samples_from_history,

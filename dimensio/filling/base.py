@@ -1,9 +1,7 @@
 from abc import ABC, abstractmethod
 from typing import Dict, Any
 from ConfigSpace import ConfigurationSpace
-from ..utils.logger import get_logger
-
-logger = get_logger(__name__)
+from openbox import logger
 
 
 class FillingStrategy(ABC):

@@ -6,9 +6,7 @@ from ConfigSpace import ConfigurationSpace, Configuration
 import ConfigSpace as CS
 from sklearn.decomposition import KernelPCA
 from sklearn.preprocessing import StandardScaler
-from ...utils.logger import get_logger
-
-logger = get_logger(__name__)
+from openbox import logger
 from .base import TransformativeProjectionStep
 from ...utils import (
     extract_numeric_hyperparameters,

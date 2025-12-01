@@ -1,8 +1,6 @@
 from typing import Dict, Any, Tuple, List
 from ConfigSpace import ConfigurationSpace
-from ..utils.logger import get_logger
-
-logger = get_logger(__name__)
+from openbox import logger
 
 
 def clip_values_to_space(values: dict, space: ConfigurationSpace, 

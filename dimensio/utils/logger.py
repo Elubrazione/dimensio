@@ -1,22 +1,23 @@
 import logging
 import sys
-from typing import Optional, Callable, Union
+from typing import Optional
 
 
 DEFAULT_FORMAT = '%(asctime)s - %(name)s - %(levelname)s - %(message)s'
 DEFAULT_LEVEL = logging.INFO
 
-_custom_logger_factory: Optional[Callable[[str], logging.Logger]] = None
+_custom_logger_factory = None
 
 
-def set_logger_factory(logger_factory: Optional[Callable[[str], logging.Logger]] = None):
+def set_logger_factory(logger_factory):
     global _custom_logger_factory
     _custom_logger_factory = logger_factory
 
 
 def get_logger(name: str) -> logging.Logger:
     if _custom_logger_factory is not None:
-        return _custom_logger_factory(name)
+        from openbox import logger as ob_logger
+        return ob_logger
     return logging.getLogger(name)
 
 

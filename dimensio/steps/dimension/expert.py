@@ -1,9 +1,7 @@
 from typing import Optional, List, Dict
 from openbox.utils.history import History
 from ConfigSpace import ConfigurationSpace
-from ...utils.logger import get_logger
-
-logger = get_logger(__name__)
+from openbox import logger
 
 from .base import DimensionSelectionStep
 from ...utils import load_expert_params

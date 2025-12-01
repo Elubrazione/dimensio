@@ -5,9 +5,7 @@ from openbox.utils.history import History
 from ConfigSpace import ConfigurationSpace
 from sklearn.ensemble import RandomForestRegressor
 import shap
-from ...utils.logger import get_logger
-
-logger = get_logger(__name__)
+from openbox import logger
 from .boundary import BoundaryRangeStep
 from ...utils import (
     create_space_from_ranges,

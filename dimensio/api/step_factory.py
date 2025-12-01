@@ -4,7 +4,7 @@ Provides functions to create compression step instances from string identifiers.
 """
 
 from typing import Optional, List, Dict, Any
-from ..utils.logger import get_logger
+from openbox import logger
 
 from ..steps.dimension import (
     SHAPDimensionStep,
@@ -34,8 +34,6 @@ from ..core import (
     HybridUpdateStrategy,
     CompositeUpdateStrategy,
 )
-
-logger = get_logger(__name__)
 
 
 def _create_importance_calculator_from_string(

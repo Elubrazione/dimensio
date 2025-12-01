@@ -5,9 +5,7 @@ Provides functions to create filling strategy instances from string identifiers 
 
 from typing import Optional, Dict, Any
 from ..filling import FillingStrategy, DefaultValueFilling
-from ..utils.logger import get_logger
-
-logger = get_logger(__name__)
+from openbox import logger
 
 _FILLING_REGISTRY = {
     'default': {
